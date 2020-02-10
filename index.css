@@ -1,0 +1,416 @@
+body {
+    background-color: firebrick;
+} .thclass {
+    width: 40px;
+    height: 140px;
+    border: 6px solid saddlebrown;
+    border-radius: 16px;
+    box-shadow: black 4px 4px 3px;
+    padding-top: 180px;
+    background-color: silver;
+    font-family: Roboto;
+    font-size: 22px;
+    color: white;
+    text-shadow: black 3px 3px 3px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+} .thclass:hover {
+    border-color: orange;
+    background-color: black;
+    color: white;
+} .thclass:active {
+    border-color: orangered;
+    background-color: slategrey;
+    color: khaki;
+    border-bottom-width: 0px;
+} .thclassB {
+	height: 200px;
+	border: 5px outset sandybrown;
+	border-radius: 12px;
+	background-color: black;
+	font-family: Roboto;
+	font-size: 16px;
+	color: white;
+	box-shadow: black 4px 4px 3px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+} .thclassB:hover {
+	border-color: maroon;
+	background-color: slategrey;
+} .thclassB:active {
+	border-color: red;
+	background-color: grey;
+	color: black;
+	border-bottom-width: 0px;
+} #backPiano {
+    display: block;
+    width: 1620px;
+    height: 770px;
+    overflow: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    background-color:darkslategray;
+    color: white;
+    font-size: 20px;
+    border: 7px solid sienna;
+    border-radius: 50px;
+    box-shadow: black 6px 6px 5px;
+    font-family: Raleway;
+    transition: height 0.35s;
+} #artcTop {
+    height: 80px;
+    padding-top: 15px;
+    transition: height 0.35s;
+} #fadvolsect {
+    margin-left: 450px;
+    margin-top: 10px;
+    transition: margin-top 0.35s;
+} #telaImg {
+    width: 150px;
+    height: 150px;
+    border-radius: 30px;
+    border: 5px outset orange;
+    box-shadow: black 4px 4px 3px;
+    cursor: pointer;
+    filter: brightness(1) contrast(1);
+    transition: all 0.5s ease;
+} #telaImg:hover {
+    border-color: orangered;
+    filter: brightness(0.85) contrast(1.5);
+} #titMus, #titArt {
+    cursor: pointer;
+    transition: all 0.2s ease;
+} #titMus {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 35px;
+    text-shadow: black 4px 4px 3px;
+    margin-top: 0px;
+    margin-bottom: -15px;
+} #titMus:hover {
+    color: grey;
+    font-size: 45px;
+} #titArt {
+    font-family: Roboto;
+    font-size: 18px;
+    text-shadow: black 3px 3px 3px;
+    color: silver;
+} #titArt:hover {
+    color: slategrey;
+} input {
+    font-family: Roboto;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    text-shadow: black 3px 3px 3px;
+} input[type=range] {
+    -webkit-appearance: none;
+    width: 150px;
+    height: 10px;
+    border-radius:5px;
+    background: lightgrey;
+    outline: none;
+    box-shadow: black 4px 4px 3px;
+    transition: all 0.3s ease;
+} input[type=range]:hover {
+    transform: scale(1.15);
+    background: slategrey;
+    margin-left: 15px;
+    margin-right: 15px;
+} input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    box-shadow: black 4px 4px 3px;
+    background:palevioletred;
+    cursor: pointer;
+    transition: all 0.3s ease;
+} input[type=range]::-webkit-slider-thumb:hover {
+    background:slateblue;
+} input[type=radio] {
+    -webkit-appearance: none;
+    background-color: white;
+    border-radius: 8px;
+    border: 3px solid silver;
+    width: 20px;
+    height: 20px;
+    box-shadow: black 3px 3px 3px;
+    transition: all 0.4s ease;
+} input[type=radio]:hover {
+    border-width: 4px; 
+    border-radius: 12px;
+    width: 30px;
+    height: 30px;
+} input[type=text] {
+    box-shadow: black 4px 4px 3px;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: orange;
+    transition: all 0.3s ease;
+} input[type=text]:hover {
+    background-color: orangered;  
+} .imgIcon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 25px;
+    margin-bottom: -20px;
+    margin-left: 5px;
+    filter: invert(0) contrast(1);
+    transform: rotate(0deg);
+    transition: all 0.35s ease;
+} .imgIcon:hover {
+    transform: rotate(360deg);
+    width: 60px;
+    height: 60px;
+    filter: invert(0) contrast(1.5);
+    border-radius: 40px;
+} .imgIcon:active {
+    filter: invert(1) contrast(1);
+} #cifraM {
+    display: none;
+    position: absolute;
+    word-wrap: break-word;
+    background-color:olive;
+    padding: 6px;
+    width: 1570px;
+    margin-left: 6px;
+    margin-top: 20px;
+    border: 6px solid saddlebrown;
+    border-radius: 15px;
+    box-shadow: black 5px 5px 4px;
+} .bClass {
+    font-size: 20px;
+    font-family: Roboto;
+    text-shadow: black 3px 3px 3px;
+    color:sandybrown;
+    cursor: pointer;
+    transition: all 0.4s ease;
+} .bClass:hover {
+    font-size: 24px;
+} .conjOpt {
+    background-color: slategrey;
+    position: absolute;
+    padding: 10px;
+    text-align: center;
+    box-shadow: black 4px 4px 3px;
+    border-radius: 20px;
+} #titTouch {
+    font-family: American Captain;
+    font-weight: normal;
+    font-size: 30px;
+    color:lightsalmon;
+    text-shadow: black 4px 4px 3px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+} #titTouch:hover {
+    font-size: 35px;
+    color: orangered;
+} #inicioPag {
+    background-color: orangered;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-bottom: 10px solid maroon;
+    margin-bottom: 15px;
+} #imgPerfil {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    filter: brightness(1) contrast(1);
+    border: 4px solid sienna;
+    box-shadow: black 4px 3px 3px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+} #imgPerfil:hover {
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
+    border-width: 8px;
+    border-color: maroon;
+    filter: brightness(1.1) contrast(1.2);
+} #title {
+    text-align: center;
+    font-family: Roboto;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: orange;
+    cursor: pointer;
+    text-shadow: black 4px 4px 3px;
+    transition: all 0.5s ease;
+} #title:hover {
+    color: saddlebrown;
+    font-size: 90px;
+} #cronomt {
+    margin-top: 20px;
+    margin-left: 750px;
+    color:limegreen;
+    cursor: default;
+    box-shadow: black -5px -5px 3px;
+    text-shadow: forestgreen 3px 3px 2px;
+    background-color: black;
+    border: 6px solid maroon;
+    border-radius: 30px;
+    width: 400px;
+    height: 120px;
+    font-family: Roboto;
+    font-size: 100px;
+    text-align: center;
+} #icondecimg {
+    margin-left: -30px;
+} #encPlayMus {
+    margin-left: -180px;
+    border-radius: 25px;
+    background-color: peru;
+    box-shadow: black 4px 4px 3px;
+    transition: background-color 0.3s ease;
+} #encPlayMus:hover {
+    background-color: saddlebrown;
+} .imgsectMus {
+    margin-top: -20px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    cursor: pointer;
+} .sectSend {
+    box-shadow: black -2px 5px 4px;
+    background-color:brown;
+    width: 450px;
+    height: 50px;
+    border-radius: 0px 35px 35px 0px;
+    padding: 10px;
+    margin-left: -8px;
+    transition: background-color 0.4s;
+} .sectSend:hover {
+    background-color:crimson;
+} .psectSend {
+    position: absolute;
+    margin-left: 20px;
+    font-size: 30px;
+    text-shadow: black 4px 4px 3px;
+    font-weight: bold;
+    color: silver;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    width: 400px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+} .psectSend:hover {
+    margin-top: 4px;
+    font-size: 32px;
+    color: slategrey;
+} #pfrstSug {
+    font-size: 40px;
+    margin-left: 8px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: sandybrown;
+    cursor: pointer;
+    text-shadow: black 3px 3px 3px;
+    transition: color 0.4s;
+} #pfrstSug:hover {
+    color:salmon;
+} footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    margin-left: -10px;
+    margin-right: -10px;
+    background-color: firebrick;
+} #musicNota {
+    position: absolute;
+    margin-top: -30px;
+    margin-left: 880px;
+    border-radius: 50px;
+    background-color:saddlebrown;
+    filter: contrast(1);
+    box-shadow: black 4px 4px 3px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+} #musicNota:hover {
+    background-color: maroon;
+    filter: contrast(1.5);
+} .imgfinal {
+    width: cover;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    margin-left: 10px;
+    margin-right: 10px;
+    filter: contrast(1);
+} .imgfinal:hover {
+    filter: contrast(1.5);
+} #artcSend {
+    box-shadow: black -2px 5px 4px;
+    padding-left: -8px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color:darkred;
+    width: 950px;
+    font-family: Roboto;
+    border-radius: 0px 40px 40px 0px;
+    transition: scale 0.3s;
+} #pausecomp {
+    display: none;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-top: -130px;
+    width: 160px;
+    height: 160px;
+    filter: brightness(1) contrast(1);
+    border-radius: 80px;
+    background-color: salmon;
+    box-shadow: black 4px 4px 3px;
+    transition: filter 0.4s;
+} #pausecomp:hover {
+    filter: brightness(0.7) contrast(1.5);
+} @media only screen and (min-width: 0px) {
+    footer {
+        border-top: 7px solid maroon;
+    } .imgfinal {
+        height: 100px;
+    } .imgfinal:hover {
+        height: 110px;
+    } #artcSend {
+        transform: scale(0.4);
+        margin-left: -295px;
+        margin-bottom: -97px;
+        margin-top: -300px;
+    }
+} @media only screen and (min-width: 720px) {
+    footer {
+        border-top: 10px solid maroon;
+    } .imgfinal {
+        height: 150px;
+    } .imgfinal:hover {
+        height: 170px;
+    } #artcSend {
+        transform: scale(0.7);
+        margin-left: -150px;
+        margin-bottom: -50px;
+        margin-top: -130px;
+    }
+} @media only screen and (min-width: 1450px) {
+    footer {
+        border-top: 16px solid maroon;
+    } .imgfinal {
+        height: 200px;
+    } .imgfinal:hover {
+        height: 220px;
+    } #artcSend {
+        transform: scale(1);
+        margin-left: -8px;
+        margin-bottom: 0px;
+        margin-top: 25px;
+    }
+}
