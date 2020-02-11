@@ -207,7 +207,6 @@
 					if(notaConj[contNot] !== "E" && notaConj[contNot] !== "B") {
 						const numid = freqList.length;
                         			element.id = "tecla" + numid;
-						element.onclick = function() { alert("sim") };
 						element.style.width = "30px";
 						element.className = "thclassB";
 						element.innerHTML = notaConj[contNot] + "#<br><br>" + caract.charAt(freqList.length);
@@ -233,7 +232,6 @@
                 element.style.width = "30px";
                 element.className = "thclassB";
                 element.id = "tecla" + numid;
-		element.onclick = function() { alert("sim") };
                 if(q == 1) {
                     element.innerHTML = "G#";
                 } else if(q == 3) {
