@@ -85,7 +85,6 @@
         </footer>
     </body>
     <script type="text/javaScript">
-	alert("Atualizando...");
         var conjKey;
         var caract;
         var musicList = new Array("Still D.R.E.", "Clocks", "The Show Must Go On", "Bohemian Rhapsody", "I Want To Break Free", "Imagine", "(I Can't Get No) Satisfaction", "Nemo", "Stairway to Heaven", "Seven Nation Army", "Believer", "Smoke on the Water", "Light My Fire", "Day Tripper", "Across The Universe", "Golden Slumbers", "Do I Wanna Know", "Let Her Go", "Come As You Are", "I'd Love to Change the World", "Até Quando Esperar", "Boombayah", "Música Desconhecida");
@@ -258,7 +257,8 @@
                 document.getElementById("pianotec").appendChild(thEle);
             }
         } for(var w = 0; w < conjKey.length; w++) {
-		document.getElementById("tecla" + w).onclick = function() { alert("sim") };	
+		const numtec = w;
+		document.getElementById("tecla" + w).onclick = createSound(numtec);	
 	} function createSound(identnota) {
             if(soundCond == false) { //---> Teclado Eletrônico
                 audioint[identnota] = new AudioContext();
