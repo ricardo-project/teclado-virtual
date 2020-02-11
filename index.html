@@ -85,7 +85,7 @@
         </footer>
     </body>
     <script type="text/javaScript">
-	alert("Teste");
+        alert("Atualizando...");
         var conjKey;
         var caract;
         var musicList = new Array("Still D.R.E.", "Clocks", "The Show Must Go On", "Bohemian Rhapsody", "I Want To Break Free", "Imagine", "(I Can't Get No) Satisfaction", "Nemo", "Stairway To Heaven", "Seven Nation Army", "Believer", "Smoke on the Water", "Light My Fire", "Day Tripper", "Across The Universe", "Golden Slumbers", "Do I Wanna Know", "Let Her Go", "Come As You Are", "I'd Love to Change the World", "Até Quando Esperar", "Boombayah", "Música Desconhecida");
@@ -278,27 +278,13 @@
                 audioint[identnota].playbackRate = 1/gainTime;
                 audioint[identnota].play();
             }
-        } function execPiano(event) {
+        } var numkey;
+        function execPiano(event) {
             if(condFocus == false) { //---> Quando não estiver focado no campo de opções de música!
                 for(var a = 0; a < conjKey.length; a++) {
                     if(event.keyCode == conjKey[a] && usingValid == true && event.key.toUpperCase() !== "Ç") {
-                        if(condExec[a] == false) {
-							createSound(a);
-                            if(execCompCond == true) {
-                                gravation[gravation.length - 1].push(a);
-                                timeGrav[timeGrav.length - 1].push(min*60000 + seg*1000 + deciseg*10);
-                            } var teclapress = document.getElementById("tecla" + a);
-                            if(a >= addMore) {
-                                teclapress.style.borderColor = "orangered";
-                                teclapress.style.backgroundColor = "slategrey";
-                                teclapress.style.color = "khaki";
-                            } else if(a < addMore) {
-                                teclapress.style.borderColor = "red";
-                                teclapress.style.backgroundColor = "grey";
-                                teclapress.style.color = "black";
-                            } teclapress.style.borderBottomWidth = "0px";
-                            condExec[a] = true;
-                        }
+                        numkey = a;
+                        audioSound(true);
                     }
                 }
             }
@@ -306,22 +292,44 @@
             if(condFocus == false) { //---> Quando não estiver focado no campo de opções de música!
                 for(var a = 0; a < conjKey.length; a++) {
                     if(event.keyCode == conjKey[a] && usingValid == true && event.key.toUpperCase() !== "Ç") {
-                        condExec[a] = false;
-                        var teclapress = document.getElementById("tecla" + a);
-                        if(a >= addMore) {
+                        numkey = a;
+                        audioSound(false);
+                    }
+                }
+            }
+        } function audioSound(cond) {
+                var teclapress = document.getElementById("tecla" + numkey);
+                if(cond == false) {
+                        condExec[numkey] = false;
+                        if(numkey >= addMore) {
                             teclapress.style.borderColor = "saddlebrown";
                             teclapress.style.backgroundColor = "silver";
                             teclapress.style.color = "white";
                             teclapress.style.borderBottomWidth = "8px";
-                        } else if(a < addMore) {
+                        } else if(numkey < addMore) {
                             teclapress.style.borderColor = "sandybrown";
                             teclapress.style.backgroundColor = "black";
                             teclapress.style.color = "white";
                             teclapress.style.borderBottomWidth = "5px";
                         }
-                    }
+                } else if(cond == true) {
+                        if(condExec[numkey] == false) {
+			        createSound(numkey);
+                                if(execCompCond == true) {
+                                    gravation[gravation.length - 1].push(numkey);
+                                    timeGrav[timeGrav.length - 1].push(min*60000 + seg*1000 + deciseg*10);
+                                } if(numkey >= addMore) {
+                                    teclapress.style.borderColor = "orangered";
+                                    teclapress.style.backgroundColor = "slategrey";
+                                    teclapress.style.color = "khaki";
+                                } else if(numkey < addMore) {
+                                    teclapress.style.borderColor = "red";
+                                    teclapress.style.backgroundColor = "grey";
+                                    teclapress.style.color = "black";
+                                } teclapress.style.borderBottomWidth = "0px";
+                                condExec[numkey] = true;
+                        }       
                 }
-            }
         } for(var t = 0; t < musicList.length; t++) {
             var optEle = document.createElement("option");
             optEle.value = musicList[t];
