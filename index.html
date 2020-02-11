@@ -38,7 +38,7 @@
             <section id=cronomt>00:00;00</section>
             <article style="position: absolute; margin-top: -158px; margin-left: 1200px; width: 400px; background-color: slategrey; filter: brightness(0.9); border-radius: 20px; text-align: center; padding-bottom: 20px; box-shadow: black 4px 4px 3px">
                 <p style="font-family: Gelasio; font-size: 25px; text-shadow: black 4px 4px 3px; font-weight: bold; margin-top: 10px; margin-bottom: 6px">Crie sua própria composição!</p>
-                <p style="display: inline"><span id=spanplay title="Gravar uma nova composição!"><img src="https://image.flaticon.com/icons/png/512/240/240784.png" id=imgPlay class=imgIcon onclick="if(isexec == true) { encerrarPlay(true) }; createComp()" onmouseover="mudarImg(true)" onmouseout="mudarImg(false)"></span><span title="Tocar uma música gravada!"><img src="https://www.pngkey.com/png/full/351-3512491_start-icon-copy.png" id=startcomp class=imgIcon style="display: none" onclick="touchMusic('compositprop', nomegrav, gravation, timeGrav)"></span><span title="Alterar nome de composição!"><img src="https://png.pngtree.com/svg/20150613/name_1004081.png" id=alternname class=imgIcon style="display: none" onclick="encerrarPlay(true); alternNameComp()"></span><span title="Baixar uma música gravada!" onclick="downlMusic(false)"><img src="https://pt.seaicons.com/wp-content/uploads/2015/11/download-2-icon.png" id=downlarch class=imgIcon style="display: none"></span><span title="Abrir música gravada em arquivo de texto!"><img src="https://www.freeiconspng.com/uploads/up-white-arrow-clip-art-3.png" id=uparch class=imgIcon onclick="findtxt.click()"></span><span title="Retornar!"><img src="https://simpleicon.com/wp-content/uploads/return_arrow.png" id=returnicon class=imgIcon style="display: none" onclick="returnFunct()"></span><span title="Limpar campo de entrada"><img src="https://static.vecteezy.com/system/resources/previews/000/630/362/non_2x/trash-can-icon-symbol-illustration-vector.jpg" id=trashcomp class=imgIcon onclick="limparCampo('compositprop')" style="display: none"></span><span title="Abortar execução da gravação!" id=spandelet><img src="https://cdn.icon-icons.com/icons2/1154/PNG/512/1486564399-close_81512.png" id=deletarcomp class=imgIcon style="display: none" onclick="encerrarPlay(true); deletMusic(compositprop.value)"></span></p>
+                <p style="display: inline"><span id=spanplay title="Gravar uma nova composição!"><img src="https://image.flaticon.com/icons/png/512/240/240784.png" id=imgPlay class=imgIcon onclick="if(isexec == true) { encerrarPlay(true) }; createComp()" onmouseover="mudarImg(true)" onmouseout="mudarImg(false)"></span><span title="Tocar uma música gravada!"><img src="https://www.pngkey.com/png/full/351-3512491_start-icon-copy.png" id=startcomp class=imgIcon style="display: none" onclick="touchMusic('compositprop', nomegrav, gravation, timeGrav)"></span><span title="Alterar nome de composição!"><img src="https://png.pngtree.com/svg/20150613/name_1004081.png" id=alternname class=imgIcon style="display: none" onclick="encerrarPlay(true); alternNameComp()"></span><span title="Baixar uma música gravada!" onclick="downlMusic(false)"><img src="https://pt.seaicons.com/wp-content/uploads/2015/11/download-2-icon.png" id=downlarch class=imgIcon style="display: none"></span><span title="Abrir música gravada em arquivo de texto!"><img src="https://www.freeiconspng.com/uploads/up-white-arrow-clip-art-3.png" id=uparch class=imgIcon onclick="findtxt.click()"></span><span title="Retornar!"><img src="https://simpleicon.com/wp-content/uploads/return_arrow.png" id=returnicon class=imgIcon style="display: none" onclick="returnFunct()"></span><span title="Limpar campo de entrada"><img src="https://static.vecteezy.com/system/resources/previews/000/630/362/non_2x/trash-can-icon-symbol-illustration-vector.jpg" id=trashcomp class=imgIcon onclick="limparCampo('compositprop'); if(startcomp.style.display == 'none') { downlarch.style.display = 'none' }" style="display: none"></span><span title="Abortar execução da gravação!" id=spandelet><img src="https://cdn.icon-icons.com/icons2/1154/PNG/512/1486564399-close_81512.png" id=deletarcomp class=imgIcon style="display: none" onclick="encerrarPlay(true); deletMusic(compositprop.value)"></span></p>
                 <p style="margin-top: 25px; margin-bottom: -9px"><input type=text id=compositprop list=complist style="display: none" oninput="downlMusic(true)"></p>
             </article>
             <section id=musicSelect style="width: 500px; display: none">
@@ -205,7 +205,9 @@
 				const lengt = h + notaConj.length*j;
 				if(lengt % 2 == 0) {
 					if(notaConj[contNot] !== "E" && notaConj[contNot] !== "B") {
-                        element.id = "tecla" + freqList.length;
+						const numid = freqList.length;
+                        			element.id = "tecla" + numid;
+						element.onclick = createSound(numid);
 						element.style.width = "30px";
 						element.className = "thclassB";
 						element.innerHTML = notaConj[contNot] + "#<br><br>" + caract.charAt(freqList.length);
@@ -227,9 +229,11 @@
             if(q % 2 == 0) {
                 element.style.width = "9.2px";
             } else if(q % 2 == 1) {
+		const numid = freqList.length;
                 element.style.width = "30px";
                 element.className = "thclassB";
-                element.id = "tecla" + freqList.length;
+                element.id = "tecla" + numid;
+		element.onclick = createSound(numid);
                 if(q == 1) {
                     element.innerHTML = "G#";
                 } else if(q == 3) {
@@ -282,7 +286,7 @@
                 for(var a = 0; a < conjKey.length; a++) {
                     if(event.keyCode == conjKey[a] && usingValid == true && event.key.toUpperCase() !== "Ç") {
                         if(condExec[a] == false) {
-							createSound(a);
+				createSound(a);
                             if(execCompCond == true) {
                                 gravation[gravation.length - 1].push(a);
                                 timeGrav[timeGrav.length - 1].push(min*60000 + seg*1000 + deciseg*10);
