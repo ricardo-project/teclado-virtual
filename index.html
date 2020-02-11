@@ -85,6 +85,7 @@
         </footer>
     </body>
     <script type="text/javaScript">
+	alert("Atualizando...");
         var conjKey;
         var caract;
         var musicList = new Array("Still D.R.E.", "Clocks", "The Show Must Go On", "Bohemian Rhapsody", "I Want To Break Free", "Imagine", "(I Can't Get No) Satisfaction", "Nemo", "Stairway to Heaven", "Seven Nation Army", "Believer", "Smoke on the Water", "Light My Fire", "Day Tripper", "Across The Universe", "Golden Slumbers", "Do I Wanna Know", "Let Her Go", "Come As You Are", "I'd Love to Change the World", "Até Quando Esperar", "Boombayah", "Música Desconhecida");
@@ -207,7 +208,6 @@
 					if(notaConj[contNot] !== "E" && notaConj[contNot] !== "B") {
 						const numid = freqList.length;
                         			element.id = "tecla" + numid;
-						element.onclick = function() { alert("sim") };
 						element.style.width = "30px";
 						element.className = "thclassB";
 						element.innerHTML = notaConj[contNot] + "#<br><br>" + caract.charAt(freqList.length);
@@ -233,7 +233,6 @@
                 element.style.width = "30px";
                 element.className = "thclassB";
                 element.id = "tecla" + numid;
-		element.onclick = function() { alert("sim") };
                 if(q == 1) {
                     element.innerHTML = "G#";
                 } else if(q == 3) {
@@ -258,7 +257,9 @@
                 freqList.push(Math.round(16350*Math.pow(2, c)*relatNot[q])/1000);
                 document.getElementById("pianotec").appendChild(thEle);
             }
-        } function createSound(identnota) {
+        } for(var w = 0; w < conjKey.length; w++) {
+		document.getElementById("tecla" + w).onclick = function() { alert("sim") };	
+	} function createSound(identnota) {
             if(soundCond == false) { //---> Teclado Eletrônico
                 audioint[identnota] = new AudioContext();
                 oscilador[identnota] = audioint[identnota].createOscillator();
