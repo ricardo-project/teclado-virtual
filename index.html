@@ -8,6 +8,7 @@
         <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto">
         <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Gelasio">
+	<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Merriweather">
     </head>
     <body onload="clickInpRadio()" onresize="alternwidPiano()">
         <section id=inicioPag>
@@ -19,7 +20,7 @@
                 <section class=conjOpt name=eletrcsect style="margin-left: 200px; display: none"><b>Configuração de onda</b> <input type=radio name=typeO1 checked=true onchange="typeOsc = 'sine'"> Senoidal <input type=radio name=typeO1 onchange="typeOsc = 'square'"> Quadrada <input type=radio name=typeO1 onchange="typeOsc = 'triangule'"> Triangular <input type=radio name=typeO1 onchange="typeOsc = 'sawtooth'"> Dente de Serra</section>
                 <section class=conjOpt name=eletrcsect style="margin-left: 50px; margin-top: 70px; display: none"><b>Fade-out</b> <input type=radio name=typeEL onchange="expLinCond = false" checked=true> Exponencial <input type=radio name=typeEL onchange="expLinCond = true"> Linear </section>
                 <section class=conjOpt id=fadvolsect><input type=text value=1.5 id=duration disabled> Duração Fade-out <input type=range id=duratrange min=0.5 max=5 step=.001 value=1.5 oninput="duratfadeout(false, value)"> Volume <input type=text value=1 id=volume1 disabled> <input type=range min=0 max=1 step=.001 id=rangeVol value=1 oninput="gainVol = value; volume1.value = value; audTSMGO.volume = value"></section>
-            </article>
+	    </article>
             <section style="background-color: grey; height: 360px; padding: 20px; border-radius: 40px; box-shadow: black 5px 5px 4px">
                 <p><table>
                     <tr id=pianotec>
