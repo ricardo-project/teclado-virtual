@@ -258,7 +258,7 @@
             }
         } for(var w = 0; w < conjKey.length; w++) {
 		const numtec = w;
-		document.getElementById("tecla" + w).onclick = createSound(numtec);	
+		document.getElementById("tecla" + numtec).onclick = function() { createSound(numtec) };	
 	} function createSound(identnota) {
             if(soundCond == false) { //---> Teclado Eletrônico
                 audioint[identnota] = new AudioContext();
