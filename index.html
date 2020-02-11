@@ -205,9 +205,9 @@
 				const lengt = h + notaConj.length*j;
 				if(lengt % 2 == 0) {
 					if(notaConj[contNot] !== "E" && notaConj[contNot] !== "B") {
-                        element.id = "tecla" + freqList.length;
+                        			element.id = "tecla" + freqList.length;
+						element.onclick = function() { alert("sim") };
 						element.style.width = "30px";
-						element.className = "thclassB";
 						element.innerHTML = notaConj[contNot] + "#<br><br>" + caract.charAt(freqList.length);
                         constExp = j/2 - 1;
                         addFreqB();
@@ -228,8 +228,8 @@
                 element.style.width = "9.2px";
             } else if(q % 2 == 1) {
                 element.style.width = "30px";
-                element.className = "thclassB";
                 element.id = "tecla" + freqList.length;
+		element.onclick = function() { alert("sim") };
                 if(q == 1) {
                     element.innerHTML = "G#";
                 } else if(q == 3) {
