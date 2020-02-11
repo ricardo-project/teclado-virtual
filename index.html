@@ -206,8 +206,7 @@
 				const lengt = h + notaConj.length*j;
 				if(lengt % 2 == 0) {
 					if(notaConj[contNot] !== "E" && notaConj[contNot] !== "B") {
-						const numid = freqList.length;
-                        			element.id = "tecla" + numid;
+                        			element.id = "tecla" + freqList.length;
 						element.style.width = "30px";
 						element.className = "thclassB";
 						element.innerHTML = notaConj[contNot] + "#<br><br>" + caract.charAt(freqList.length);
@@ -229,10 +228,9 @@
             if(q % 2 == 0) {
                 element.style.width = "9.2px";
             } else if(q % 2 == 1) {
-		const numid = freqList.length;
                 element.style.width = "30px";
                 element.className = "thclassB";
-                element.id = "tecla" + numid;
+                element.id = "tecla" + freqList.length;
                 if(q == 1) {
                     element.innerHTML = "G#";
                 } else if(q == 3) {
@@ -414,14 +412,16 @@
                     teclanum = timeAnt[k];
                 } tecla = document.getElementById("tecla" + teclanum);
                 if(teclanum >= addMore) {
-                    tecla.style.backgroundColor = "silver";
+                    /*tecla.style.backgroundColor = "silver";
                     tecla.style.borderColor = "saddlebrown";
-                    tecla.style.borderBottomWidth = "8px";
+                    tecla.style.borderBottomWidth = "8px";*/
+		    tecla.className = "thclass";
                 } else if(teclanum < addMore) {
-                    tecla.style.backgroundColor = "black";
+                    /*tecla.style.backgroundColor = "black";
                     tecla.style.borderColor = "sandybrown";
-                    tecla.style.borderBottomWidth = "5px";
-                } tecla.style.color = "white";
+                    tecla.style.borderBottomWidth = "5px";*/
+	   	    tecla.className = "thclassB";
+		}
             } if(newcond2 == true) {
                 telaImg.src = "";
                 musicSelect.style.display = "none";
