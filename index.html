@@ -237,7 +237,7 @@
                 } else if(q == 3) {
                     element.innerHTML = "A#";
                 } element.innerHTML += "<br><br>" + caract.charAt(freqList.length);
-				constExp = 2;
+		constExp = 2;
                 addFreqB();
             } document.getElementById("pianotecB").appendChild(element);
         } const addMore = freqList.length;
@@ -315,14 +315,12 @@
                         if(a >= addMore) {
                             teclapress.style.borderColor = "saddlebrown";
                             teclapress.style.backgroundColor = "silver";
-                            teclapress.style.color = "white";
                             teclapress.style.borderBottomWidth = "8px";
                         } else if(a < addMore) {
                             teclapress.style.borderColor = "sandybrown";
                             teclapress.style.backgroundColor = "black";
-                            teclapress.style.color = "white";
                             teclapress.style.borderBottomWidth = "5px";
-                        }
+                        } teclapress.style.color = "white";
                     }
                 }
             }
@@ -422,7 +420,7 @@
                     tecla.style.borderColor = "sandybrown";
                     tecla.style.borderBottomWidth = "5px";
 	   	    tecla.className = "thclassB";
-		}
+		} tecla.style.color = "white";
             } if(newcond2 == true) {
                 telaImg.src = "";
                 musicSelect.style.display = "none";
