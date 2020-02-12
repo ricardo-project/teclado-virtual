@@ -202,14 +202,14 @@ body {
 } #titTouch {
     font-family: Merriweather;
     font-weight: normal;
-    font-size: 22px;
+    font-size: 20px;
     color:lightsalmon;
     text-shadow: black 4px 4px 3px;
     margin-right: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 } #titTouch:hover {
-    font-size: 26px;
+    font-size: 22px;
     color: orangered;
 } #inicioPag {
     background-color: orangered;
