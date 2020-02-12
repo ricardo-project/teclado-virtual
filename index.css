@@ -209,7 +209,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 } #titTouch:hover {
-    font-size: 35px;
+    font-size: 26px;
     color: orangered;
 } #inicioPag {
     background-color: orangered;
