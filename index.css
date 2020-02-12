@@ -13,8 +13,8 @@ body {
     color: white;
     text-shadow: black 3px 3px 3px;
     cursor: pointer;
-    transition: all 0.25s ease;
-} .thclass:hover {
+    /*transition: all 0.25s ease;*/
+} /*.thclass:hover {
     border-color: orange;
     background-color: black;
     color: white;
@@ -23,7 +23,7 @@ body {
     background-color: slategrey;
     color: khaki;
     border-bottom-width: 0px;
-} .thclassB {
+}*/ .thclassB {
 	height: 200px;
 	border: 5px outset sandybrown;
 	border-radius: 12px;
@@ -33,8 +33,8 @@ body {
 	color: white;
 	box-shadow: black 4px 4px 3px;
 	cursor: pointer;
-	transition: all 0.2s ease;
-} .thclassB:hover {
+	/*transition: all 0.2s ease;*/
+} /*.thclassB:hover {
 	border-color: maroon;
 	background-color: slategrey;
 } .thclassB:active {
@@ -42,7 +42,7 @@ body {
 	background-color: grey;
 	color: black;
 	border-bottom-width: 0px;
-} #backPiano {
+}*/ #backPiano {
     display: block;
     width: 1620px;
     height: 770px;
