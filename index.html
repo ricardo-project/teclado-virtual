@@ -88,8 +88,8 @@
     <script type="text/javaScript">
         var conjKey;
         var caract;
-        var musicList = new Array("Still D.R.E.", "Clocks", "The Show Must Go On", "Bohemian Rhapsody", "I Want To Break Free", "Imagine", "(I Can't Get No) Satisfaction", "Nemo", "Stairway to Heaven", "Seven Nation Army", "Believer", "Smoke on the Water", "Light My Fire", "Day Tripper", "Across The Universe", "Golden Slumbers", "Do I Wanna Know", "Let Her Go", "Come As You Are", "I'd Love to Change the World", "Até Quando Esperar", "Boombayah", "Música Desconhecida");
-        var artistList = new Array("Dr. Dre (feat. Snoopy Dogg) - 2001 (1999)", "Coldplay - A Rush of Blood to the Head (2002)", "Queen - Innuendo (1991)", "Queen - A Night at the Opera (1975)", "Queen - The Works (1984)", "John Lennon - Imagine (1971)", "The Rolling Stones - Out of Our Heads (1965)", "Nightwish - Once (2004)", "Led Zeppelin - Led Zeppelin IV (1971)", "The White Stripes - Elephant (2003)", "Imagine Dragons - Evolve (2017)", "Deep Purple - Machine Head (1972)", "The Doors - The Doors (1967)", "The Beatles (1965)", "The Beatles - Let It Be (1970)", "The Beatles - Abbey Road (1969)", "Arctic Monkeys - AM (2013)", "Passenger - All The Little Lights (2012)", "Nirvana - Nevermind (1991)", "Ten Years After - A Space In Time (1971)", "Plebe Rude - O Concreto Já Rachou (1986)", "Blackpink - Blackpink (2017)", "Artista Desconhecido");
+        var musicList = new Array("Still D.R.E.", "Clocks", "The Show Must Go On", "Bohemian Rhapsody", "I Want To Break Free", "Imagine", "(I Can't Get No) Satisfaction", "Nemo", "Stairway to Heaven", "Seven Nation Army", "Believer", "Smoke on the Water", "Light My Fire", "Day Tripper", "Across The Universe", "Golden Slumbers", "Do I Wanna Know", "Let Her Go", "Come As You Are", "I'd Love to Change the World", "Até Quando Esperar", "Boombayah", "Bad Guy", "Música Desconhecida");
+        var artistList = new Array("Dr. Dre (feat. Snoopy Dogg) - 2001 (1999)", "Coldplay - A Rush of Blood to the Head (2002)", "Queen - Innuendo (1991)", "Queen - A Night at the Opera (1975)", "Queen - The Works (1984)", "John Lennon - Imagine (1971)", "The Rolling Stones - Out of Our Heads (1965)", "Nightwish - Once (2004)", "Led Zeppelin - Led Zeppelin IV (1971)", "The White Stripes - Elephant (2003)", "Imagine Dragons - Evolve (2017)", "Deep Purple - Machine Head (1972)", "The Doors - The Doors (1967)", "The Beatles (1965)", "The Beatles - Let It Be (1970)", "The Beatles - Abbey Road (1969)", "Arctic Monkeys - AM (2013)", "Passenger - All The Little Lights (2012)", "Nirvana - Nevermind (1991)", "Ten Years After - A Space In Time (1971)", "Plebe Rude - O Concreto Já Rachou (1986)", "Blackpink - Blackpink (2017)", "Billie Eilish - When We All Fall Asleep, Where Do We Go? (2019)", "Artista Desconhecido");
         if(/Chrome\/\d./i.test(navigator.userAgent)) {
             if(/Edge\/\d./i.test(navigator.userAgent)) {
                 alert("Desculpe-nos, mas este programa não funciona ao ser exibido pelo Microsoft Edge... Favor, faça uso em outro navegador! =/");
@@ -208,7 +208,6 @@
 					if(notaConj[contNot] !== "E" && notaConj[contNot] !== "B") {
                         			element.id = "tecla" + freqList.length;
 						element.style.width = "30px";
-						element.className = "thclassB";
 						element.innerHTML = notaConj[contNot] + "#<br><br>" + caract.charAt(freqList.length);
                         constExp = j/2 - 1;
                         addFreqB();
@@ -229,14 +228,13 @@
                 element.style.width = "9.2px";
             } else if(q % 2 == 1) {
                 element.style.width = "30px";
-                element.className = "thclassB";
                 element.id = "tecla" + freqList.length;
                 if(q == 1) {
                     element.innerHTML = "G#";
                 } else if(q == 3) {
                     element.innerHTML = "A#";
                 } element.innerHTML += "<br><br>" + caract.charAt(freqList.length);
-		constExp = 2;
+				constExp = 2;
                 addFreqB();
             } document.getElementById("pianotecB").appendChild(element);
         } const addMore = freqList.length;
@@ -255,18 +253,7 @@
                 freqList.push(Math.round(16350*Math.pow(2, c)*relatNot[q])/1000);
                 document.getElementById("pianotec").appendChild(thEle);
             }
-        } for(var w = 0; w < conjKey.length; w++) {
-		const numtec = w;
-		document.getElementById("tecla" + numtec).onclick = function() {
-			createandaddSound(numtec);
-		};	
-	} function createandaddSound(number) {
-		createSound(number);
-                if(execCompCond == true) {
-                	gravation[gravation.length - 1].push(number);
-                	timeGrav[timeGrav.length - 1].push(min*60000 + seg*1000 + deciseg*10);
-               	}	
-	} function createSound(identnota) {
+        } function createSound(identnota) {
             if(soundCond == false) { //---> Teclado Eletrônico
                 audioint[identnota] = new AudioContext();
                 oscilador[identnota] = audioint[identnota].createOscillator();
@@ -294,8 +281,11 @@
                 for(var a = 0; a < conjKey.length; a++) {
                     if(event.keyCode == conjKey[a] && usingValid == true && event.key.toUpperCase() !== "Ç") {
                         if(condExec[a] == false) {
-			    createandaddSound(a);
-			    var teclapress = document.getElementById("tecla" + a);
+							createSound(a);
+                            if(execCompCond == true) {
+                                gravation[gravation.length - 1].push(a);
+                                timeGrav[timeGrav.length - 1].push(min*60000 + seg*1000 + deciseg*10);
+                            } var teclapress = document.getElementById("tecla" + a);
                             if(a >= addMore) {
                                 teclapress.style.borderColor = "orangered";
                                 teclapress.style.backgroundColor = "slategrey";
@@ -319,12 +309,14 @@
                         if(a >= addMore) {
                             teclapress.style.borderColor = "saddlebrown";
                             teclapress.style.backgroundColor = "silver";
+                            teclapress.style.color = "white";
                             teclapress.style.borderBottomWidth = "8px";
                         } else if(a < addMore) {
                             teclapress.style.borderColor = "sandybrown";
                             teclapress.style.backgroundColor = "black";
+                            teclapress.style.color = "white";
                             teclapress.style.borderBottomWidth = "5px";
-                        } teclapress.style.color = "white";
+                        }
                     }
                 }
             }
@@ -336,7 +328,7 @@
             } else {
                 optEle.label = artistList[t];
             } document.getElementById("optMusic").appendChild(optEle);
-        } var fadeoutExec = new Array(0.5, 1.3, 0.5, 1.75, 1.55, 2.1, 1.25, 1.7, 1.9, 1.6, 1.2, 1.3, 1.5, 1.2, 1.75, 2, 1.45, 1.5, 1.6, 1.3, 1.25, 1.8, 1.3); //---> Fade-out exclusivo para cada música
+        } var fadeoutExec = new Array(0.5, 1.3, 0.5, 1.75, 1.55, 2.1, 1.25, 1.7, 1.9, 1.6, 1.2, 1.3, 1.5, 1.2, 1.75, 2, 1.45, 1.5, 1.6, 1.3, 1.25, 1.8, 1.5, 1.3); //---> Fade-out exclusivo para cada música
         var timeExec = new Array(); //---> Tempo de execução de cada nota a partir do início
 			timeExec[0] = new Array(); //---> Still D.R.E.
 			timeExec[1] = new Array(); //---> Clocks
@@ -360,20 +352,21 @@
             timeExec[19] = new Array(); //---> I'd Love to Change the World
 			timeExec[20] = new Array(0, 1020, 1390, 1990, 2600, 3840, 4780, 5100, 5560, 5980, 6350, 6800, 7230, 7590, 9710, 10080, 10580, 11040, 11400, 12080, 12700, 13990, 14970, 15300, 15770, 16210, 16560, 17040, 17490, 17830); //---> Até Quando Esperar
             timeExec[21] = new Array(0, 480, 970, 1320, 1690, 1950, 2450, 2930, 3290, 3650, 3920, 4400, 4880, 5230, 5600, 5840, 6360, 6830, 7180, 7520, 7790, 8310, 8780, 9120, 9490, 9750, 10200, 10640, 10990, 11350, 11600, 12090, 12570, 12920, 13300, 13540, 14040, 14520, 14880, 15240, 15510); //---> Boombayah
-		    timeExec[22] = new Array(0, 340, 670, 1030, 1710, 2060, 3080); //---> Música Desconhecida
+	    timeExec[22] = new Array(0, 240, 660, 870, 1090, 1280, 1480, 1720, 1950, 2390, 2600, 2820, 3040, 3250, 3480, 3700, 4150, 4380, 4590, 4800, 5000, 5230, 5440, 5860, 6100, 6310, 6520, 6730, 6960, 7190, 7630, 7840, 8050, 8270, 8470, 8690, 8930, 9390, 9600, 9810, 10040, 10240, 10450, 10720, 11160, 11370, 11640, 12040, 12250); //---> Bad Guy
+		    timeExec[23] = new Array(0, 340, 670, 1030, 1710, 2060, 3080); //---> Música Desconhecida
 		var sequencMusic = new Array(); //---> Sequência de notas de cada música
-			sequencMusic[0] = new Array([34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [33, 36, 39], [33, 36, 39], [33, 36, 39], [33, 36, 38], [33, 36, 38], [33, 36, 38], [33, 36, 38], [33, 36, 38], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [33, 36, 39], [33, 36, 39], [33, 36, 39], [33, 36, 38], [33, 36, 38], [33, 36, 38], [33, 36, 38], [33, 36, 38]); //---> Still D.R.E.
-			sequencMusic[1] = new Array([11], [9], [31], [11], [9], [31], [11], [9], [10], [9], [30], [10], [9], [30], [10], [9], [10], [9], [30], [10], [9], [30], [10], [9], [34], [8], [30], [34], [8], [30], [34], [8], [4, 6, 11], [9], [31], [4, 6, 11], [9], [31], [4, 6, 11], [9], [4, 5, 10], [9], [30], [4, 5, 10], [9], [30], [4, 5, 10], [9], [4, 5, 10], [9], [30], [4, 5, 10], [9], [30], [4, 5, 10], [9], [3, 27, 34], [8], [30], [3, 27, 34], [8], [30], [3, 27, 34], [8]); //---> Clocks
-			sequencMusic[2] = new Array([26, 28, 7], [26, 28, 7], [26, 28, 7], [26, 28, 7], [26, 5, 28, 7], [26, 5, 28, 7], [26, 5, 28, 7], [26, 5, 28, 7], [26, 28, 29, 7], [26, 28, 29, 7], [26, 28, 29, 7], [26, 28, 29, 7], [26, 28, 7], [26, 28, 7], [26, 28, 7], [26, 28, 7], [24, 26, 28], [24, 26, 28], [24, 26, 28], [24, 26, 28], [24, 26, 5, 28], [24, 26, 5, 28], [24, 26, 5, 28], [24, 26, 5, 28], [24, 26, 28, 29], [24, 26, 28, 29], [24, 26, 28, 29], [24, 26, 28, 29], [24, 26, 28], [24, 26, 28], [24, 26, 28], [24, 26, 28], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5]); //---> The Show Must Go On
+		sequencMusic[0] = new Array([34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [33, 36, 39], [33, 36, 39], [33, 36, 39], [33, 36, 38], [33, 36, 38], [33, 36, 38], [33, 36, 38], [33, 36, 38], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [34, 36, 39], [33, 36, 39], [33, 36, 39], [33, 36, 39], [33, 36, 38], [33, 36, 38], [33, 36, 38], [33, 36, 38], [33, 36, 38]); //---> Still D.R.E.
+		sequencMusic[1] = new Array([11], [9], [31], [11], [9], [31], [11], [9], [10], [9], [30], [10], [9], [30], [10], [9], [10], [9], [30], [10], [9], [30], [10], [9], [34], [8], [30], [34], [8], [30], [34], [8], /**/[4, 6, 11], [9], [31], [4, 6, 11], [9], [31], [4, 6, 11], [9], [4, 5, 10], [9], [30], [4, 5, 10], [9], [30], [4, 5, 10], [9], [4, 5, 10], [9], [30], [4, 5, 10], [9], [30], [4, 5, 10], [9], [3, 27, 34], [8], [30], [3, 27, 34], [8], [30], [3, 27, 34], [8]); //---> Clocks
+		sequencMusic[2] = new Array([26, 28, 7], [26, 28, 7], [26, 28, 7], [26, 28, 7], [26, 5, 28, 7], [26, 5, 28, 7], [26, 5, 28, 7], [26, 5, 28, 7], [26, 28, 29, 7], [26, 28, 29, 7], [26, 28, 29, 7], [26, 28, 29, 7], [26, 28, 7], [26, 28, 7], [26, 28, 7], [26, 28, 7], [24, 26, 28], [24, 26, 28], [24, 26, 28], [24, 26, 28], [24, 26, 5, 28], [24, 26, 5, 28], [24, 26, 5, 28], [24, 26, 5, 28], [24, 26, 28, 29], [24, 26, 28, 29], [24, 26, 28, 29], [24, 26, 28, 29], [24, 26, 28], [24, 26, 28], [24, 26, 28], [24, 26, 28], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [22, 24, 26], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5], [2, 4, 5]); //---> The Show Must Go On
             sequencMusic[3] = new Array([20], [23], [26], [28], [24, 31], [23, 30], [20], [23], [26], [28], [24, 31], [23, 30], [21], [23], [26], [28], [25, 32], [24, 31]); //---> Bohemian Rhapsody
             sequencMusic[4] = new Array([26], [29], [7], [7], [22, 3, 7], [8], [22, 3], [22, 3], [26], [29], [7], [32], [22, 3], [8], [22, 3], [22, 3], [26], [29], [7], [7], [22, 3, 32], [8], [7], [32], [8], [22, 3], [7], [22, 3], [32], [8], [7], [32], [8], [7], [21, 2, 7], [8], [7], [0, 22, 29], [5], [0, 22], [7], [7], [29], [0, 22], [5], [22, 3, 26]); //---> I Want To Break Free
-			sequencMusic[5] = new Array([22, 24], [20], [22, 24], [20], [22, 24], [20], [24, 26], [20], [23, 25], [20], [23, 25], [20], [23, 25], [20], [25], [4], [26], [22, 24]); //---> Imagine
-			sequencMusic[6] = new Array([26], [26], [26], [5], [28], [28], [28], [5], [5], [5], [26], [26], [26], [5], [28], [28], [28], [5], [28], [5], [26]); //---> (I Can't Get No) Satisfaction
-			sequencMusic[7] = new Array([35], [35], [34], [35], [32], [35], [35], [34], [35], [30], [34], [34], [35], [32], [31], [30], [29], [27], [28], [35], [35], [34], [35], [32], [35], [35], [34], [35], [30], [34], [34], [35], [32], [31], [30], [29], [27], [28]); //---> Nemo
-			sequencMusic[8] = new Array([25], [27], [29], [32], [33], [29], [27], [33], [34], [29], [27], [34], [7], [28], [25], [7], [29], [27], [25], [27], [29], [27], [25], [24], [25], [25]); //---> Stairway to Heaven
-			sequencMusic[9] = new Array([29], [29], [31], [29], [28], [27], [26], [29], [29], [31], [29], [28], [27], [28], [27], [26], [29], [29], [31], [29], [28], [27], [26], [29], [29], [31], [29], [28], [27], [28], [27], [26]); //---> Seven Nation Army
-			sequencMusic[10] = new Array([25, 32], [27], [25, 36], [27], [25, 35], [27], [25, 35], [27, 34], [25, 35], [27], [25, 35], [27, 36], [25, 35], [27, 34], [25, 32], [27, 31], [23, 32], [27], [23, 36], [27], [23, 35], [27], [23, 35], [27, 34], [3, 35], [26], [3, 35], [26, 36], [3, 35], [26, 34], [3, 32], [26, 31], [25, 32], [27], [25, 34], [27], [25, 39], [27], [25], [27], [25, 36], [27], [25], [27, 36], [25, 35], [27, 34], [25, 32], [27, 31], [23, 32], [27], [23, 34], [27], [23, 39], [27], [23], [27], [3, 13], [26], [3], [26], [3], [26], [3], [26]); //---> Believer
-			sequencMusic[11] = new Array([28, 31], [30, 9], [31, 34], [28, 31], [30, 9], [8, 10], [31, 34], [28, 31], [30, 9], [31, 34], [30, 9], [28, 31], [28, 31], [30, 9], [31, 34], [28, 31], [30, 9], [8, 10], [31, 34], [28, 31], [30, 9], [31, 34], [30, 9], [28, 31]); //---> Smoke on the Water
+	    sequencMusic[5] = new Array([22, 24], [20], [22, 24], [20], [22, 24], [20], [24, 26], [20], [23, 25], [20], [23, 25], [20], [23, 25], [20], [25], [4], [26], [22, 24]); //---> Imagine
+		sequencMusic[6] = new Array([26], [26], [26], [5], [28], [28], [28], [5], [5], [5], [26], [26], [26], [5], [28], [28], [28], [5], [28], [5], [26]); //---> (I Can't Get No) Satisfaction
+		sequencMusic[7] = new Array([35], [35], [34], [35], [32], [35], [35], [34], [35], [30], [34], [34], [35], [32], [31], [30], [29], [27], [28], [35], [35], [34], [35], [32], [35], [35], [34], [35], [30], [34], [34], [35], [32], [31], [30], [29], [27], [28]); //---> Nemo
+		sequencMusic[8] = new Array([25], [27], [29], [32], [33], [29], [27], [33], [34], [29], [27], [34], [7], [28], [25], [7], [29], [27], [25], [27], [29], [27], [25], [24], [25], [25]); //---> Stairway to Heaven
+		sequencMusic[9] = new Array([29], [29], [31], [29], [28], [27], [26], [29], [29], [31], [29], [28], [27], [28], [27], [26], [29], [29], [31], [29], [28], [27], [26], [29], [29], [31], [29], [28], [27], [28], [27], [26]); //---> Seven Nation Army
+		sequencMusic[10] = new Array([25, 32], [27], [25, 36], [27], [25, 35], [27], [25, 35], [27, 34], [25, 35], [27], [25, 35], [27, 36], [25, 35], [27, 34], [25, 32], [27, 31], [23, 32], [27], [23, 36], [27], [23, 35], [27], [23, 35], [27, 34], [3, 35], [26], [3, 35], [26, 36], [3, 35], [26, 34], [3, 32], [26, 31], [25, 32], [27], [25, 34], [27], [25, 39], [27], [25], [27], [25, 36], [27], [25], [27, 36], [25, 35], [27, 34], [25, 32], [27, 31], [23, 32], [27], [23, 34], [27], [23, 39], [27], [23], [27], [3, 37], [26], [3], [26], [3], [26], [3], [26]); //---> Believer
+		sequencMusic[11] = new Array([28, 31], [30, 9], [31, 34], [28, 31], [30, 9], [8, 10], [31, 34], [28, 31], [30, 9], [31, 34], [30, 9], [28, 31], [28, 31], [30, 9], [31, 34], [28, 31], [30, 9], [8, 10], [31, 34], [28, 31], [30, 9], [31, 34], [30, 9], [28, 31]); //---> Smoke on the Water
             sequencMusic[12] = new Array([33], [31], [32], [33], [35], [34], [33], [32], [31], [32], [30], [32], [34], [37], [35], [34], [9], [31], [9], [31], [9], [30], [31], [32], [34], [33], [32], [29], [30], [32]); //---> Light My Fire
             sequencMusic[13] = new Array([22], [22], [24], [3], [29], [28], [26], [7], [26], [28], [29], [22], [22], [24], [3], [29], [28], [26], [7], [26], [28], [29], [22], [22], [24], [3], [29], [28], [26], [7], [26], [28], [29], [22], [22], [24], [3], [29], [28], [26], [7], [26], [28], [29]); //---> Day Tripper
             sequencMusic[14] = new Array([25, 7], [28], [7, 35], [28], [29, 10], [28, 33], [5, 32], [7], [2, 25], [2, 26], [2, 25], [2, 26], [2, 25], [2, 26], [2, 25], [2, 26], [22, 25], [22, 26], [22, 25], [22, 26], [22, 25], [22, 26], [22, 25], [22, 26]); //---> Across The Universe
@@ -382,9 +375,10 @@
             sequencMusic[17] = new Array([32], [33], [32], [31], [28], [29], [31], [29], [33], [32], [33], [32], [31], [28], [29], [31], [29], [33], [32], [32], [33], [32], [31], [28], [29], [31], [29], [31], [35], [33], [31], [32], [33]); //---> Let Her Go
             sequencMusic[18] = new Array([1], [1], [22], [23], [3], [23], [3], [23], [23], [22], [1], [4], [1], [1], [4], [1], [22], [23], [3], [23], [3], [23], [23], [22], [1], [4], [1], [1], [4], [1], [22], [23]); //---> Come As You Are
             sequencMusic[19] = new Array([22], [26], [29], [31], [22], [23], [2], [24], [26], [28], [31], [38], [33], [31], [28], [24], [25], [29], [32], [34], [25], [4], [26], [27], [29], [31], [34], [31], [26], [6], [32], [33], [22], [26], [29], [31], [22], [23], [2], [24], [26], [28], [31], [38], [33], [31], [28], [24], [25], [29], [32], [34], [25], [4], [26], [27], [29], [31], [34], [31], [26], [6], [32], [33]); //---> I'd Love to Change the World
-			sequencMusic[20] = new Array([32], [33], [34], [36], [35], [32], [33], [34], [33], [32], [31], [30], [29], [28], [33], [32], [32], [33], [34], [36], [35], [32], [33], [34], [33], [32], [31], [30], [29], [28]); //---> Até Quando Esperar
+	    sequencMusic[20] = new Array([32], [33], [34], [36], [35], [32], [33], [34], [33], [32], [31], [30], [29], [28], [33], [32], [32], [33], [34], [36], [35], [32], [33], [34], [33], [32], [31], [30], [29], [28]); //---> Até Quando Esperar
             sequencMusic[21] = new Array([30], [30], [30], [7], [6], [30], [30], [8], [31], [9], [30], [30], [30], [7], [6], [30], [30], [6], [6], [29], [30], [30], [30], [7], [6], [30], [30], [8], [31], [9], [30], [30], [30], [7], [6], [30], [30], [6], [6], [29], [30]); //---> Boombayah
-            sequencMusic[22] = new Array([36], [35], [34], [35], [32], [34], [41]); //---> Música Desconhecida
+	    sequencMusic[22] = new Array([31], [35], [31], [10], [35], [10], [9], [31], [35], [31], [10], [35], [10], [9], [31], [35], [31], [10], [35], [10], [9], [31], [35], [31], [10], [35], [10], [9], [35], [39], [35], [12], [39], [12], [11], [35], [35], [39], [35], [12], [39], [12], [11], [35], [39], [35], [38], [35], [34], [34]); //---> Bad Guy
+            sequencMusic[23] = new Array([36], [35], [34], [35], [32], [34], [41]); //---> Música Desconhecida
         var icondecade = new Array("https://pngimage.net/wp-content/uploads/2018/05/anni-60-png-1.png", "https://i.ya-webdesign.com/images/music-png-tumblr-5.png", "https://pngimage.net/wp-content/uploads/2018/05/a%C3%B1os-80-png-1.png", "https://i.ya-webdesign.com/images/png-music-hits-download-3.png", "https://lh3.googleusercontent.com/5UWuX9yOhT1Zi-Ypg32_ufw1jSLu6r_OjdcXD32X52naF-rexsGVpXjOKTVYXqZDyEpz", "https://image.flaticon.com/icons/png/512/1987/1987997.png"); //---> Ícone de cada década dentre 1960's - 2010's
 		var conjInterv = new Array(0, 1, 2, 10, 15, 19);
         var interv = new Array(320, 220, 330, 290, 400, 230);
