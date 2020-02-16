@@ -657,7 +657,7 @@
             } else if(condupload == true) {
                 if(condupl == false) {
                     tagadownl.click();
-                    openAfterExec(true);
+                    openAfterExec(true, false);
                 } else if(condupl == true) {
                     downlarch.style.display = "none";
                     identcomp();
@@ -665,7 +665,7 @@
             }
         } function returnFunct() {
             if(execCompCond == false) {
-                openAfterExec(true);
+                openAfterExec(true, false);
             } else if(execCompCond == true) {
                 countingReg(false);
                 countingReg(true);
@@ -738,7 +738,7 @@
             var optcompvar = document.createElement("option");
             optcompvar.value = valor1;
             document.getElementById("complist").appendChild(optcompvar);
-            openAfterExec(false);
+            openAfterExec(false, false);
         } function createComp() {
             if(execCompCond == false) {
                 timeGrav.push(new Array());
@@ -773,10 +773,13 @@
         } var nomegrav = new Array();
         var gravation = new Array();
         var timeGrav = new Array();
-        function openAfterExec(condappear) {
+        function openAfterExec(condappear, deletcomp) {
             uparch.style.display = "inline";
             returnicon.style.display = "none";
-            if(condappear == false) {
+	    if(deletcomp == true) {
+		timeGrav.splice(timeGrav.length - 1, 1);
+		gravation.splice(gravation.length - 1, 1);    
+	    } if(condappear == false) {
                 touchMe.style.display = "block";
                 if(gravation.length > 0) {
                     startcomp.style.display = "inline";
@@ -873,16 +876,14 @@
         function gravarComp() {
             if(timeGrav[timeGrav.length - 1].length == 0) {
                 alert("Nenhuma nota foi gravada aqui. Portanto, este trecho não será armazenado na sua lista de composições!");
-                openAfterExec(false);
+                openAfterExec(false, true);
             } else {
                 condNameComp = false;
                 do {
                     var nameComp = prompt("Você terminou de gravar uma composição. Favor, se quiser manter ela, insira um nome para a composição gravada e clique em OK (ou pressione Enter). Se quiser descartar completamente a composição, clique em Cancelar!" + observatname);
                     if(nameComp == null) {
                         alert("Composição descartada com sucesso... Tente outras gravações!");
-                        timeGrav.splice(timeGrav.length - 1, 1);
-                        gravation.splice(gravation.length - 1, 1);
-                        openAfterExec(false);
+                        openAfterExec(false, true);
                         break;
                     } else if(nameComp !== null) {
                         verifNameComp(nameComp, false);
@@ -921,11 +922,9 @@
                 }  compositprop.value = "";
                 compositprop.focus();
             } else if(execCompCond == true) {
-                timeGrav.splice(timeGrav.length - 1, 1);
-                gravation.splice(gravation.length - 1, 1);
                 deletarcomp.style.display = "none";
                 returnGrav();
-                openAfterExec(false);
+                openAfterExec(false, true);
             }
         } var valoraltn;
         function alternNameComp() {
