@@ -486,7 +486,12 @@
                                 audTSMGO.volume = gainVol;
                                 audTSMGO.play();
                             }, timeExec[2][timeExec[2].length - 1] + 2000));
-                        } document.getElementById("telaImg").src = "Imagens/" + itemComp + ".jpg";
+                        } var nameImage = "Imagens/" + itemComp + ".";
+			if(h == listaComp.length - 1) {
+				nameImage += "gif"
+			} else {
+				nameImage += "jpg"
+			} document.getElementById("telaImg").src = nameImage
                         document.getElementById("titMus").textContent = itemComp;
                         document.getElementById("titArt").textContent = artistList[h];
                         document.getElementById("musicSelect").style.display = "block";
